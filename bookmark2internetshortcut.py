@@ -12,7 +12,8 @@ def recur_bookmarks(children, cdir):
         #pprint.pprint(child)
         if 'type' in child:
             if child['type'] == 'bookmark':
-                f = open(cdir + '/' + remove_invalid_char(child['title']) + '.url', 'w')
+                name = cdir + '/' + remove_invalid_char(child['title'])
+                f = open(name[:150] + '.url', 'w')
                 f.write('[InternetShortcut]\nIDList=\nURL='+child['url'])
         if 'children' in child:
             if 'ns_root' in child:
