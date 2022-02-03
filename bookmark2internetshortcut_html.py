@@ -9,7 +9,7 @@ def remove_invalid_char(str):
 
 def recur_bookmarks(children, cdir):
     for child in children:
-        #pprint.pprint(child)
+        pprint.pprint("1"+child)
         if 'type' in child:
             if child['type'] == 'bookmark':
                 name = cdir + '/' + remove_invalid_char(child['title'])
@@ -24,6 +24,7 @@ def recur_bookmarks(children, cdir):
                 if child['type'] == 'folder':
                     ndir = cdir + '/' + remove_invalid_char(child['title'])
                     os.makedirs(ndir, exist_ok=True)
+            pprint.pprint("2"+child)
             recur_bookmarks(child['children'], ndir)
 
 files = glob.glob("./*.html")
